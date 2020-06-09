@@ -50,10 +50,11 @@ async function main(): Promise<void> {
   // Now we can create our `balances.transfer` unsigned tx. The following
   // function takes the above data as arguments, so can be performed offline
   // if desired.
-  const unsigned = methods.balances.transfer(
+
+  const unsigned = methods.proxy.addProxy(
     {
-      value: 12,
-      dest: '14E5nqKAp3oAJcmzgZhUD2RcptBeUBScxKHgJKU4HPNcKVf3', // Bob
+      proxy: '14E5nqKAp3oAJcmzgZhUD2RcptBeUBScxKHgJKU4HPNcKVf3', // Bob,
+      proxyType: 'Any',
     },
     {
       address: deriveAddress(alice.publicKey, POLKADOT_SS58_FORMAT),
@@ -74,6 +75,31 @@ async function main(): Promise<void> {
       registry,
     }
   );
+
+  // const unsigned = methods.balances.transfer(
+  //   {
+  //     value: 12,
+  //     dest: '14E5nqKAp3oAJcmzgZhUD2RcptBeUBScxKHgJKU4HPNcKVf3', // Bob
+  //   },
+  //   {
+  //     address: deriveAddress(alice.publicKey, POLKADOT_SS58_FORMAT),
+  //     blockHash,
+  //     blockNumber: registry
+  //       .createType('BlockNumber', block.header.number)
+  //       .toNumber(),
+  //     eraPeriod: 64,
+  //     genesisHash,
+  //     metadataRpc,
+  //     nonce: 0, // Assuming this is Alice's first tx on the chain
+  //     specVersion,
+  //     tip: 0,
+  //     transactionVersion,
+  //   },
+  //   {
+  //     metadataRpc,
+  //     registry,
+  //   }
+  // );
 
   // Decode an unsigned transaction.
   const decodedUnsigned = decode(unsigned, {
