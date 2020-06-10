@@ -17,9 +17,3 @@ describe('proxy::addProxy', () => {
     // testBaseTxInfo(unsigned);
   });
 });
-
-// addProxy(
-//   TEST_METHOD_ARGS.proxy.addProxy,
-//   CC1_TEST_BASE_TX_INFO,
-//   CC1_TEST_OPTIONS
-// );

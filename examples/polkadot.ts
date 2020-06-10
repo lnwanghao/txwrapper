@@ -45,7 +45,12 @@ async function main(): Promise<void> {
   );
 
   // Create Polkadot's type registry.
-  const registry = getRegistry('Polkadot', 'polkadot', specVersion);
+  const registry = getRegistry(
+    'Polkadot CC1',
+    'polkadot',
+    specVersion,
+    metadataRpc
+  );
 
   // Now we can create our `balances.transfer` unsigned tx. The following
   // function takes the above data as arguments, so can be performed offline
@@ -65,7 +70,7 @@ async function main(): Promise<void> {
       eraPeriod: 64,
       genesisHash,
       metadataRpc,
-      nonce: 0, // Assuming this is Alice's first tx on the chain
+      nonce: 0, // Assuming this is Alice's SECOND tx on the chain
       specVersion,
       tip: 0,
       transactionVersion,
@@ -107,8 +112,8 @@ async function main(): Promise<void> {
     registry,
   });
   console.log(
-    `\nDecoded Transaction\n  To: ${decodedUnsigned.method.args.dest}\n` +
-      `  Amount: ${decodedUnsigned.method.args.value}`
+    `\nDecoded Transaction\n  To: ${decodedUnsigned.method.args.proxy}\n` +
+      `  Amount: ${decodedUnsigned.method.args.proxyType}`
   );
 
   // Construct the signing payload from an unsigned transaction.
@@ -121,8 +126,8 @@ async function main(): Promise<void> {
     registry,
   });
   console.log(
-    `\nDecoded Transaction\n  To: ${payloadInfo.method.args.dest}\n` +
-      `  Amount: ${payloadInfo.method.args.value}`
+    `\nDecoded Transaction\n  To: ${payloadInfo.method.args.proxy}\n` +
+      `  Amount: ${payloadInfo.method.args.proxyType}`
   );
 
   // Sign a payload. This operation should be performed on an offline device.

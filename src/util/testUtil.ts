@@ -56,7 +56,7 @@ export const CC1_TEST_BASE_TX_INFO = {
 
 export const CC1_TEST_OPTIONS = {
   metadataRpc,
-  registry: getRegistry('Polkadot CC1', 'polkadot', 6),
+  registry: getRegistry('Polkadot CC1', 'polkadot', 6, metadataRpc),
 };
 
 /**

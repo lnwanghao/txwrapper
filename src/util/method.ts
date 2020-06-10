@@ -57,7 +57,7 @@ export function createMethod(
   const { metadataRpc, registry } = options;
   registry.setMetadata(createMetadata(registry, metadataRpc));
   const metadata = createDecorated(registry, metadataRpc);
-  console.log(metadata.tx);
+
   const methodFunction = metadata.tx[info.method.pallet][info.method.name];
   const method = methodFunction(
     ...methodFunction.meta.args.map((arg) => {
