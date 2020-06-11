@@ -55,7 +55,7 @@ async function main(): Promise<void> {
   // function takes the above data as arguments, so can be performed offline
   // if desired.
 
-  const unsigned = methods.proxy.addProxy(
+  const unsigned = methods.proxy.removeProxy(
     {
       proxy: '14E5nqKAp3oAJcmzgZhUD2RcptBeUBScxKHgJKU4HPNcKVf3', // Bob,
       proxyType: 'Any',
@@ -69,7 +69,7 @@ async function main(): Promise<void> {
       eraPeriod: 64,
       genesisHash,
       metadataRpc,
-      nonce: 0, // Remember to change
+      nonce: 1, // Remember to change
       specVersion,
       tip: 0,
       transactionVersion,
