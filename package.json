@@ -20,8 +20,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@polkadot/api": "^1.18.1",
-    "@types/memoizee": "^0.4.3"
+    "@polkadot/api": "1.18.1",
+    "@types/memoizee": "0.4.3"
   },
   "devDependencies": {
     "@amaurymartiny/config": "^1.0.10",
